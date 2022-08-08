@@ -13,7 +13,7 @@ function App() {
     <div className="App">
       {fighters.data &&
         fighters.data.map((fighter: Fighter) => {
-          return <div key={fighter.name}>{fighter.name}HERE</div>;
+          return <div key={fighter.name}>{fighter.name}</div>;
         })}
     </div>
   );
