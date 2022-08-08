@@ -7,6 +7,5 @@ type Fighter = {
 };
 
 type Fighters = {
-  [x: string]: any;
-  [Fighter: Fighter]: Fighter[];
+  Fighter: Fighter[];
 };
