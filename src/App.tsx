@@ -1,22 +1,19 @@
 import { AxiosResponse } from "axios";
-import { useEffect, useState } from "react";
 import { API, BASE_URL } from "./services";
+import { useQuery } from "react-query";
 
 function App() {
-  const [fighters, setFighters] = useState<Fighters | null>(null);
-  useEffect(() => {
-    const getAllFighters = async () => {
-      const response: AxiosResponse<Fighters> = await API.getAll(BASE_URL);
-      setFighters(response.data);
-    };
+  const { isLoading, data: fighters } = useQuery(["fighters"], () =>
+    API.getAll(BASE_URL)
+  );
 
-    getAllFighters();
-  }, []);
+  if (isLoading) return <div>Loading...</div>;
+
   return (
     <div className="App">
-      {fighters &&
-        fighters.map((fighter: Fighter) => {
-          return <div>{fighter.name}</div>;
+      {fighters.data &&
+        fighters.data.map((fighter: Fighter) => {
+          return <div key={fighter.name}>{fighter.name}</div>;
         })}
     </div>
   );
