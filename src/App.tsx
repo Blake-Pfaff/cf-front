@@ -1,6 +1,6 @@
-import { AxiosResponse } from "axios";
 import { API, BASE_URL } from "./services";
 import { useQuery } from "react-query";
+import "./index.css";
 
 function App() {
   const { isLoading, data: fighters } = useQuery(["fighters"], () =>
@@ -13,7 +13,11 @@ function App() {
     <div className="App">
       {fighters.data &&
         fighters.data.map((fighter: Fighter) => {
-          return <div key={fighter.name}>{fighter.name}</div>;
+          return (
+            <div className="text-3xl font-bold underline" key={fighter.name}>
+              {fighter.name}
+            </div>
+          );
         })}
     </div>
   );
