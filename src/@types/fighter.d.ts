@@ -7,5 +7,5 @@ type Fighter = {
 };
 
 type Fighters = {
-  Fighter: Fighter[];
+  Fighter: {};
 };
